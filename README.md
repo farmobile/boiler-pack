@@ -1,7 +1,3 @@
-<div>
-    <img width="128" height="128" src="https://github.com/farmobile/boiler-pack/blob/master/src/icon.svg" />
-</div>
-
 # boiler-pack
 This is a (slightly) opinionated boilerplate starter project for creating React apps. It's based on the technologies/conventions that the Farmobile Web Team uses in their production apps.
 
