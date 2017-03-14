@@ -1,5 +1,5 @@
 <div>
-    <img width="128" height="128" src="https://raw.githubusercontent.com/farmobile/boiler-pack/master/src/icon.svg" />
+    <img width="128" height="128" src="https://github.com/farmobile/boiler-pack/blob/master/src/icon.svg" />
 </div>
 
 # boiler-pack
