@@ -1,0 +1,14 @@
+*, *:before, *:after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    font-family: 'Helvetica Neue', 'Roboto', 'Calibri', 'Helvetica', Arial, sans-serif;
+    font-size: medium;
+    color: #343a40;
+    background-color: #e9ecef;
+}

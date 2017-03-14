@@ -1,0 +1,55 @@
+{
+  "name": "boiler-pack",
+  "version": "1.0.0",
+  "description": "Boilerplate Webpack2 + React starter project for single-page web apps.",
+  "scripts": {
+    "start": "webpack-dashboard -- webpack-dev-server",
+    "lint": "eslint src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/farmobile/boiler-pack"
+  },
+  "bugs":{
+    "url" : "https://github.com/farmobile/boiler-pack/issues"
+  },
+  "keywords": [
+    "react",
+    "reactjs",
+    "boilerplate",
+    "hot",
+    "reload",
+    "hmr",
+    "webpack"
+  ],
+  "author": "Jon Carenza <jcarenza@farmobile.com> (https://www.farmobile.com/)",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.4.0",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "babel-preset-stage-2": "^6.22.0",
+    "css-loader": "^0.26.2",
+    "eslint": "^3.17.1",
+    "eslint-plugin-react": "^6.9.0",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.10.1",
+    "postcss-loader": "^1.3.3",
+    "postcss-scss": "^0.4.1",
+    "precss": "^1.4.0",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "style-loader": "^0.13.2",
+    "webpack": "^2.2.0",
+    "webpack-dashboard": "0.2.1",
+    "webpack-dev-server": "^2.2.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-router-dom": "^4.0.0"
+  }
+}
