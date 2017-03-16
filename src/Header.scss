@@ -1,0 +1,11 @@
+.header {
+    display: block;
+    background-color: #495057;
+    padding: 3.2rem;
+}
+
+:global {
+    svg {
+        fill: #66d9e8;
+    }
+}

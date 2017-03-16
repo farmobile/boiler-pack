@@ -1,11 +1,12 @@
 import React from 'react'
+import styles from './Header.scss'
 
 // this is an example of a stateless functional Component
 // props and context are passed in as arguments:  (props, context) => {...}
 // they can be destructured like so: ({propName}, {contextName: cname}) => {...}
 
 export default ({center}) => (
-    <header>
+    <header className={styles.header}>
         <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="229 -516 64 64" style={{display:'block', margin: center ? 'auto' : '0'}}>
             <g transform="translate(224.099 -519.429)">
                 <path id="Path_1" data-name="Path 1" d="M30.925,60.953a2.293,2.293,0,1,0,2.293-2.291A2.3,2.3,0,0,0,30.925,60.953Zm2.293-1.265a1.267,1.267,0,1,1-1.266,1.265A1.267,1.267,0,0,1,33.218,59.688Z" transform="translate(-8 -19.601)"/>

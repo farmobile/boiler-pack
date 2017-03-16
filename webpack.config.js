@@ -1,52 +1,83 @@
 var path = require('path');
 var webpack = require('webpack');
 var DashboardPlugin = require('webpack-dashboard/plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
+var PreloadWebpackPlugin = require('preload-webpack-plugin');
 
-module.exports = {
-  entry: {
-    main:[
-        'react-hot-loader/patch',
-        'webpack-dev-server/client?http://localhost:3000',
-        'webpack/hot/only-dev-server',
-        'babel-polyfill',
-        './src/index',
-        './src/global.scss'
-    ]
-  },
 
-  output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
-  },
 
-  devtool: 'inline-source-map',
+module.exports = function(env){
+    // custom configuration options (via cli --> 'yarn start -- --env.option')
+    // if(env.option){...}
 
-  module: {
-    rules: [
-      { test: /\.(js|jsx)$/, use: ['babel-loader'], exclude: /node_modules/ },
-      { test: /\.css$/, use: ['style-loader', 'css-loader'] },
-      { test: /\.scss$/, use: ['style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]', 'postcss-loader'] },
-      { test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/, use: ['file-loader'] }
-    ],
-  },
+    // return config object
+    return {
+        entry: {
+            main:[
+                'react-hot-loader/patch',
+                // 'webpack-dev-server/client',
+                // 'webpack/hot/only-dev-server',
+                'babel-polyfill',
+                './src/index',
+                './src/global.scss'
+            ]
+        },
 
-  plugins: [
-    new webpack.DefinePlugin({
-        __HMR__: true,
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new DashboardPlugin()
-  ],
+        output: {
+            filename: '[name].js',
+            path: path.resolve(__dirname, 'dist/static'),
+            publicPath: '/static/'
+        },
 
-  devServer: {
-    host: 'localhost',
-    port: 3000,
-    historyApiFallback: true,
-    hot: true,
-    quiet: true
-    // contentBase: if the index.html is in a different directory than the webpack.config.js file
-  },
+        devtool: 'inline-source-map',
+
+        module: {
+            rules: [
+                { test: /\.(js|jsx)$/, use: ['babel-loader'], exclude: /node_modules/ },
+                { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+                { test: /\.scss$/, use: ['style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]', 'postcss-loader'] },
+                { test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/, use: ['file-loader'] }
+            ],
+        },
+
+        plugins: [
+            new webpack.HotModuleReplacementPlugin(),
+            new webpack.NamedModulesPlugin(),
+            new webpack.NoEmitOnErrorsPlugin(),
+            new DashboardPlugin(),
+            new webpack.DefinePlugin({
+                __HMR__: true,
+            }),
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'vendor',
+                minChunks: function (module) {
+                   // implicitly split all code from the 'node_modules' directory into this chunk
+                   return module.context && module.context.indexOf('node_modules') !== -1;
+                }
+            }),
+            new webpack.optimize.CommonsChunkPlugin({
+                name: 'manifest',
+                minChunks: Infinity
+            }),
+            new HtmlWebpackPlugin({
+                alwaysWriteToDisk: true,
+                title: 'boiler-pack (HMR)',
+                template: path.resolve(__dirname, 'src/index.template.ejs')
+            }),
+            new PreloadWebpackPlugin({
+                rel: 'prefetch'
+            }),
+            new HtmlWebpackHarddiskPlugin({
+                outputPath: path.resolve(__dirname, 'dist')
+            })
+        ],
+
+        devServer: {
+            historyApiFallback: true,
+            hot: true,
+            quiet: true,
+            contentBase: path.resolve(__dirname, 'dist')
+        },
+    }
 };

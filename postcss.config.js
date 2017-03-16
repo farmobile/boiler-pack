@@ -1,5 +1,6 @@
 module.exports = {
   plugins: [
-    require('precss')({ /* ...options */ })
+    require('precss')({ /* ...options */ }),
+    require('autoprefixer')
   ]
 }
