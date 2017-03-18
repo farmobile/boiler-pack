@@ -8,19 +8,31 @@ var PreloadWebpackPlugin = require('preload-webpack-plugin');
 
 
 module.exports = function(env){
-    // custom configuration options (via cli --> 'yarn start -- --env.option')
-    // if(env.option){...}
+
+    // default params
+    var port = 8080;
+    var host = 'localhost';
+
+    // custom configuration options (via cli: 'yarn start -- --env.option')
+    if(env){
+        if(env.port){
+            port = env.port;
+        }
+        if(env.host){
+            host = env.host;
+        }
+    }
 
     // return config object
     return {
         entry: {
             main:[
                 'react-hot-loader/patch',
-                // 'webpack-dev-server/client',
-                // 'webpack/hot/only-dev-server',
+                'webpack-dev-server/client?http://' + host + ':' + port,
+                'webpack/hot/only-dev-server',
                 'babel-polyfill',
-                './src/index',
-                './src/global.scss'
+                'normalize.css',
+                './src/index'
             ]
         },
 
@@ -34,11 +46,16 @@ module.exports = function(env){
 
         module: {
             rules: [
+                //{ enforce: 'pre', test: /\.(js||jsx)$/, exclude: /node_modules/, loader: 'eslint-loader' },
                 { test: /\.(js|jsx)$/, use: ['babel-loader'], exclude: /node_modules/ },
                 { test: /\.css$/, use: ['style-loader', 'css-loader'] },
                 { test: /\.scss$/, use: ['style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]', 'postcss-loader'] },
                 { test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/, use: ['file-loader'] }
             ],
+        },
+
+        resolve: {
+            modules: [path.resolve(__dirname, './src'), 'node_modules']
         },
 
         plugins: [
@@ -75,9 +92,12 @@ module.exports = function(env){
 
         devServer: {
             historyApiFallback: true,
+            host: host,
+            port: port,
             hot: true,
             quiet: true,
-            contentBase: path.resolve(__dirname, 'dist')
+            contentBase: path.resolve(__dirname, 'dist'),
+            publicPath: '/static/'
         },
     }
 };

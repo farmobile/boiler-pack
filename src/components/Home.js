@@ -1,12 +1,10 @@
 import React from 'react'
-import { BrowserRouter, Route, Link } from 'react-router-dom'
 import Header from './Header'
-import styles from './App.scss'
+
 
 export default () => (
-    <div className={`${styles.card} ${styles.container}`}>
-        <Header center={true} />
-        <h1 className={styles.title}>Hello World</h1>
+    <div>
+        <h1>Hello World!</h1>
         <p>This starter project contains examples of the following concepts:</p>
         <h4>Class-Based Components</h4>
         <h4>Stateless Functional Components</h4>

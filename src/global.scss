@@ -1,78 +1,93 @@
-*, *:before, *:after{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+:global {
+    *, *:before, *:after{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-html {
-    font-size: 62.5%;
-}
+    html {
+        font-size: 62.5%;
+    }
+    body, input, textarea {
+        font-family: 'Roboto', 'Helvetica Neue', 'Calibri', 'Helvetica', Arial, sans-serif;
+        color: #495057;
+    }
+    input, textarea {
+        border: .1rem solid #ccc;
+    }
+    body {
+        font-size: medium;
 
-body {
-    font-family: 'Roboto', 'Helvetica Neue', 'Calibri', 'Helvetica', Arial, sans-serif;
-    font-size: medium;
-    color: #495057;
-    background-color: #e9ecef;
-}
+        background-color: #e9ecef;
+    }
 
-p {margin-bottom: 1em;}
+    a {color: #228ae6; text-decoration: none;}
 
-h1, h2, h3, h4, h5, h6 {
-  margin: 1.414em 0 0.5em;
-  font-weight: inherit;
-  line-height: 1.2;
-}
+    p {margin-bottom: 1em;}
 
-h1 {font-size: 2.074em;}
-h2 {font-size: 1.728em;}
-h3 {font-size: 1.44em;}
-h4 {font-size: 1.2em;}
-h5 {font-size: 1em;}
-h6 {font-size: 0.833em;}
-small {font-size: 0.694em;}
+    h1, h2, h3, h4, h5, h6 {
+      margin: 1.414em 0 0.5em;
+      font-weight: inherit;
+    }
 
-blockquote, q {
-    quotes: "“" "”" "‘" "’";
-}
-blockquote{
-    display: block;
-    margin: 2.4rem 4.8rem;
-    padding: 1.7rem 3.2rem 1.5rem 3.2rem;
-    font-size: 2rem;
-    line-height: 1.6;
-    border-left: .4rem solid #AAA;
-    font-style: italic;
-    font-weight: 300;
-    footer {
-        margin-top: .8rem;
-        &:before{
-            content: '\2014';
-            margin-right: .5em;
-        }
-        cite {
-            font-size: 1.4rem;
+    h1 {font-size: 2.074em;}
+    h2 {font-size: 1.728em;}
+    h3 {font-size: 1.44em;}
+    h4 {font-size: 1.2em;}
+    h5 {font-size: 1em;}
+    h6 {font-size: 0.833em;}
+    small {font-size: 0.694em;}
+
+    blockquote, q {
+        quotes: "“" "”" "‘" "’";
+    }
+    blockquote{
+        display: block;
+        margin: 2.4rem 4.8rem;
+        padding: 1.7rem 3.2rem 1.5rem 3.2rem;
+        font-size: 2rem;
+        line-height: 1.6;
+        border-left: .4rem solid #AAA;
+        font-style: italic;
+        font-weight: 300;
+        footer {
+            margin-top: .8rem;
+            &:before{
+                content: '\2014';
+                margin-right: .5em;
+            }
+            cite {
+                font-size: 1.4rem;
+            }
         }
     }
-}
-pre.code {
-    margin: 1.6rem 0 2.4rem 0;
-    font-size: 16px;
-    padding: 1.6rem;
-    color: #eee;
-    background-color: #444;
-    word-break: normal;
-    white-space: pre-wrap;
-}
+    pre.code {
+        margin: 1.6rem 0 2.4rem 0;
+        font-size: 16px;
+        padding: 1.6rem;
+        color: #eee;
+        background-color: #444;
+        word-break: normal;
+        white-space: pre-wrap;
+    }
 
-button {
-	margin:.8rem;
-	padding:1.4rem;
-	font-size:1.6rem;
-	border: 1px solid #555;
-	background-color: #555;
-	color:#FFF;
-	font-weight: bold;
-}
-button + button{
-	margin-left: 0;
+    button, .link {
+        display: inline-block;
+        padding: 1rem;
+    }
+
+    button {
+        border: .1rem solid #228ae6;
+        background-color: #228ae6;
+        color: #fff;
+        &.link {
+            background: transparent;
+            border-color: transparent;
+            color: #228ae6
+        }
+    }
+
+    button + button{
+    	margin-left: 0;
+    }
 }
