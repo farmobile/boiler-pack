@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 
 
-const BasicReducer = (state = {title: 'About', text: 'This is the default text from our redux store.'}, action) => {
+const BasicReducer = (state = {title: 'About', text: 'Default text from the Redux store.'}, action) => {
     switch(action.type){
         case 'CHANGE_PAGE_DATA':
             return {...state, title: action.payload.title, text: action.payload.text}

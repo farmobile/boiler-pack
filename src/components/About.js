@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import { Route, Link } from 'react-router-dom'
+import { Switch, Route, Link } from 'react-router-dom'
 import styles from './Form.scss'
 
 
@@ -21,23 +21,33 @@ class About extends Component {
     }
 
     render(){
+        console.log('<About> render()')
         const { match, location } = this.props
         const { title, text } = this.props.data
 
         return (
             <div>
-                <h2>{title}</h2>
-                <p>{text}</p>
-                <br/>
-                <p><button type="button" onClick={this.randomizeData.bind(this)}>Change</button></p>
+                <Route exact path={`${match.path}`} render={() => (
+                    <div>
+                        <h2>{title}</h2>
+                        <p>{text}</p>
+                        <p><Link to={`${match.path}/edit`}>Edit</Link></p>
+                    </div>
+                )}/>
+                <Route exact path={`${match.path}/edit`} render={() => (
+                    <div>
+                        <h2>{title}</h2>
+                        <p>{text}</p>
+                        <p><Link to={`${match.path}`}>Cancel</Link></p>
+                    </div>
+                )}/>
             </div>
         )
 
     }
 }
 
-export default connect(
-    state => ({
-        data: state.basic
-    })
-)(About)
+
+export default connect((state) => ({
+    data: state.basic
+}))(About)

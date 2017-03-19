@@ -24,9 +24,15 @@ If you're looking for something more bare bones (and less opinionated), use [cre
 * autoprefixer + browserslist
 * webpack-dashboard
 
-### Getting Started
-First things first...be sure that you have `node` and `yarn` installed on your system. You can check to see if they're already installed by running the command `node -v` or `yarn --version`. If needed, follow these directions for [installing Node](https://nodejs.org/en/download/) or [installing Yarn](https://yarnpkg.com/en/docs/install).
+### Prerequisites
+First things first...be sure that you have `node` and `yarn` installed on your system. You can check to see if they're already installed by running the commands:
+```bash
+node -v
+yarn --version
+```
+If needed, follow the directions for [installing Node](https://nodejs.org/en/download/package-manager/) or [installing Yarn](https://yarnpkg.com/en/docs/install).
 
+### Getting Started
 ```bash
 # after cloning/downloading the repo...
 # navigate to the directory containing the package.json file

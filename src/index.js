@@ -1,17 +1,16 @@
-import { AppContainer } from 'react-hot-loader'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'react-router-redux'
+import { AppContainer } from 'react-hot-loader'
 import createHistory from 'history/createBrowserHistory'
 import configureStore from './configureStore'
 import App from 'components/App'
 
-
+// Create the browser history object (will be passed to the router and the redux store)
+export const history = createHistory()
 // select dom node to mount the app (defined in our index.template.ejs)
 const rootEl = document.getElementById('root')
-// Create the browser history object (will be passed to the router and the redux store)
-const history = createHistory()
+
 // Build the redux store (will be passed into the <Provider>)
 const store = configureStore(history)
 
@@ -21,13 +20,11 @@ const store = configureStore(history)
 const render = Component => {
     console.log('<index> render()')
     ReactDOM.render(
-        <Provider store={store}>
-            <ConnectedRouter history={history}>
-                <AppContainer>
-                    <Component />
-                </AppContainer>
-            </ConnectedRouter>
-        </Provider>,
+        <AppContainer>
+            <Provider store={store}>                
+                <Component history={history} />
+            </Provider>
+        </AppContainer>,
         rootEl
     )
 }
