@@ -6,7 +6,6 @@ var HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 var PreloadWebpackPlugin = require('preload-webpack-plugin');
 
 
-
 module.exports = function(env){
 
     // default params
@@ -46,7 +45,7 @@ module.exports = function(env){
 
         module: {
             rules: [
-                //{ enforce: 'pre', test: /\.(js||jsx)$/, exclude: /node_modules/, loader: 'eslint-loader' },
+                // linting on each build takes too long...enable it in your IDE instead { enforce: 'pre', test: /\.(js||jsx)$/, exclude: /node_modules/, loader: 'eslint-loader' },
                 { test: /\.(js|jsx)$/, use: ['babel-loader'], exclude: /node_modules/ },
                 { test: /\.css$/, use: ['style-loader', 'css-loader'] },
                 { test: /\.scss$/, use: ['style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]', 'postcss-loader'] },
@@ -69,8 +68,8 @@ module.exports = function(env){
             new webpack.optimize.CommonsChunkPlugin({
                 name: 'vendor',
                 minChunks: function (module) {
-                   // implicitly split all code from the 'node_modules' directory into this chunk
-                   return module.context && module.context.indexOf('node_modules') !== -1;
+                    // implicitly split all code from the 'node_modules' directory into this chunk
+                    return module.context && module.context.indexOf('node_modules') !== -1;
                 }
             }),
             new webpack.optimize.CommonsChunkPlugin({

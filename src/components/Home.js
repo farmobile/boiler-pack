@@ -1,13 +1,13 @@
-import React from 'react'
-import Header from './Header'
+import React from "react";
 
-
-export default () => {
-    console.log('<Home> render()')
-    return(
+const Home = () => {
+    console.log("<Home> render()");
+    return (
         <div>
             <h1>Hello World!</h1>
-            <p>This starter project contains examples of the following concepts:</p>
+            <p>
+                This starter project contains examples of the following concepts:
+            </p>
             <h4>Class-Based Components</h4>
             <h4>Stateless Functional Components</h4>
             <h4>CSS Modules</h4>
@@ -15,5 +15,7 @@ export default () => {
             <h4>Lazy-Loaded Bundle Splitting</h4>
             <p>coming soon...</p>
         </div>
-    )
-}
+    );
+};
+
+export default Home

@@ -1,6 +1,3 @@
 module.exports = {
-  plugins: [
-    require('precss')({ /* ...options */ }),
-    require('autoprefixer')
-  ]
-}
+    plugins: [ require("precss")({}), require("autoprefixer") ]
+};

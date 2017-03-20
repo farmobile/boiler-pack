@@ -1,7 +1,5 @@
 .title {
     font-size: 1.728em;
-    padding: 1rem;
-    border: .1rem solid transparent;
     &.inline {
         padding: 0;
         border: none;
@@ -9,6 +7,10 @@
             padding: 1rem;
         }
     }
+}
+.title, .text {
+    padding: 1rem;
+    border: .1rem solid transparent;
 }
 
 :global{

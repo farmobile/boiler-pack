@@ -1,36 +1,39 @@
-import { combineReducers } from 'redux'
-import { routerReducer } from 'react-router-redux'
+import { combineReducers } from "redux";
+import { routerReducer } from "react-router-redux";
 
+const INITIAL_STATE = { title: "About", text: "Default text from the Redux store." }
 
-const BasicReducer = (state = {title: 'About', text: 'Default text from the Redux store.'}, action) => {
-    switch(action.type){
-        case 'CHANGE_PAGE_DATA':
-            return {...state, title: action.payload.title, text: action.payload.text}
+const BasicReducer = (state = INITIAL_STATE, action) => {
+    switch (action.type) {
+        case "CHANGE_PAGE_DATA":
+            return {
+                ...state,
+                title: action.payload.title,
+                text: action.payload.text
+            };
         default:
-            return state
+            return state;
     }
-}
+};
 
-
-const DynamicReducer = (state = {}, action) => {
-    const { type } = action
+const DynamicReducer = (state = {value: null}, action) => {
+    const { type } = action;
 
     const handlers = {
-        'TOGGLE' (state, { payload }) {
-            return state
+        'UPDATE' (state, { payload }) {
+            return {...state, value: payload};
         }
-    }
+    };
 
     if (type in handlers) {
-        return handlers[type](state, action)
+        return handlers[type](state, action);
     }
 
-    return state
-}
-
+    return state;
+};
 
 export default combineReducers({
     router: routerReducer,
     basic: BasicReducer,
     dynamic: DynamicReducer
-})
+});
