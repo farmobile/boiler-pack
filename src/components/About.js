@@ -5,6 +5,7 @@ import { Field, reduxForm } from 'redux-form'
 import styles from "./Form.scss";
 
 class About extends Component {
+
     randomizeData() {
         const num = Math.floor(Math.random() * 9);
         const num2 = Math.floor(Math.random() * 9);
@@ -39,17 +40,21 @@ class About extends Component {
     submitFunction(values){
         return new Promise((resolve) => {
             // do any validation or data manipulation here
+            // ...
+            // dispatch the change action (could be an imported action creator)
             this.props.dispatch({
                 type: "CHANGE_PAGE_DATA",
                 payload: { title: values.title, text: values.text }
             })
-            // TODO: change back to display view after updating store
+            // TODO: this is probably not a great idea...this is considered a side-effect
+            // we should properly handle this with redux-thunk, redux-saga or redux-observables
+            this.props.history.push(`${this.props.match.path}`)
             resolve()
         })
     }
 
     render() {
-        console.log("<About> render()");
+        console.log("<About> render()", this.props);
         const { match } = this.props;
         const { title, text } = this.props.data;
         return (
@@ -61,8 +66,8 @@ class About extends Component {
                             <h2 className={styles.title}>{title}</h2>
                             <p className={styles.text}>{text}</p>
                             <p>
-                                <Link to={`${match.path}/edit`} style={{padding: '1rem'}}>Edit</Link>
-                                <a onClick={this.randomizeData.bind(this)} style={{padding: '1rem'}}>
+                                <Link to={`${match.path}/edit`} className='button'>Edit</Link>
+                                <a onClick={this.randomizeData.bind(this)} className='button'>
                                     Randomize
                                 </a>
                             </p>
@@ -76,17 +81,20 @@ class About extends Component {
                         const { handleSubmit, submitting } = this.props
                         return (
                             <div>
+                                <br/><br/>
                                 <form onSubmit={handleSubmit(this.submitFunction.bind(this))}>
                                     <div>
                                         <div>
                                             <Field name="title" component="input" type="text" placeholder="Title" />
                                         </div>
+                                        <br/>
                                         <div>
                                             <Field name="text" component="input" type="text" placeholder="Text" />
                                         </div>
+                                        <br/>
                                         <div>
                                             <button type="submit" disabled={submitting}>Submit</button>
-                                            <Link to={`${match.path}`}>Cancel</Link>
+                                            <Link to={`${match.path}`} className="button">Cancel</Link>
                                         </div>
                                     </div>
                                 </form>
