@@ -1,6 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Route } from "react-router-dom";
+import React, { Component } from "react"
+import { connect } from "react-redux"
+import { Switch, Route, Link } from "react-router-dom"
+import { Field, reduxForm } from 'redux-form'
 import styles from "./Form.scss";
 
 class About extends Component {
@@ -21,7 +22,7 @@ class About extends Component {
         const texts = [
             "I wish I was little bit taller. I wish I was a baller. I wish I had a girl who looked good I would call her. I wish I had a rabbit in a hat with a bat, and a '64 Impala",
             "All lies and jest, still, a man hears what he wants to hear and disregards the rest.",
-            "A singer in a smokey room...The smell of wine and cheap perfume",
+            "Just a small town girl, livin' in a lonely world. She took the midnight train goin' anywhere.",
             "Every new beginning comes from some other beginning's end.",
             "It's been a hard day's night, and I'd been working like a dog.",
             "I'm just a bill. Yes, I'm only a bill. And I'm sitting here on Capitol Hill.",
@@ -35,31 +36,72 @@ class About extends Component {
         });
     }
 
+    submitFunction(values){
+        return new Promise((resolve) => {
+            // do any validation or data manipulation here
+            this.props.dispatch({
+                type: "CHANGE_PAGE_DATA",
+                payload: { title: values.title, text: values.text }
+            })
+            // TODO: change back to display view after updating store
+            resolve()
+        })
+    }
+
     render() {
         console.log("<About> render()");
         const { match } = this.props;
         const { title, text } = this.props.data;
-
         return (
-            <div>
+            <Switch>
                 <Route
-                    exact
-                    path={`${match.path}`}
+                    exact path={`${match.path}`}
                     render={() => (
                         <div>
                             <h2 className={styles.title}>{title}</h2>
                             <p className={styles.text}>{text}</p>
                             <p>
-                                <a onClick={this.randomizeData.bind(this)}>
+                                <Link to={`${match.path}/edit`} style={{padding: '1rem'}}>Edit</Link>
+                                <a onClick={this.randomizeData.bind(this)} style={{padding: '1rem'}}>
                                     Randomize
                                 </a>
                             </p>
                         </div>
                     )}
                 />
-            </div>
+                <Route
+                    exact
+                    path={`${match.path}/edit`}
+                    render={() => {
+                        const { handleSubmit, submitting } = this.props
+                        return (
+                            <div>
+                                <form onSubmit={handleSubmit(this.submitFunction.bind(this))}>
+                                    <div>
+                                        <div>
+                                            <Field name="title" component="input" type="text" placeholder="Title" />
+                                        </div>
+                                        <div>
+                                            <Field name="text" component="input" type="text" placeholder="Text" />
+                                        </div>
+                                        <div>
+                                            <button type="submit" disabled={submitting}>Submit</button>
+                                            <Link to={`${match.path}`}>Cancel</Link>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        )
+                    }}
+                />
+            </Switch>
         );
     }
 }
-
-export default connect(state => ({ data: state.basic }))(About);
+export default connect(state => ({
+    data: state.basic,
+    initialValues: state.basic
+}))(reduxForm({
+    form: 'edit',  // a unique identifier for this form
+    enableReinitialize: true
+})(About))

@@ -41,7 +41,7 @@ module.exports = function(env){
             publicPath: '/static/'
         },
 
-        devtool: 'inline-source-map',
+        devtool: 'cheap-module-eval-source-map',
 
         module: {
             rules: [
