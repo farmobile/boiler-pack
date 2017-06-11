@@ -1,6 +1,5 @@
 import React from "react";
-import { Switch, Route, NavLink } from "react-router-dom";
-import { ConnectedRouter } from "react-router-redux";
+import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
 import Header from "./Header";
 import "../global.scss";
 import styles from "./App.scss";
@@ -11,7 +10,7 @@ import Topics from "./Topics";
 const App = ({ history }) => {
     console.log("<App> render()");
     return (
-        <ConnectedRouter history={history}>
+        <BrowserRouter history={history}>
             <div className={`${styles.card} ${styles.container}`}>
                 <Header center={true} />
                 <nav>
@@ -51,7 +50,7 @@ const App = ({ history }) => {
                     </Switch>
                 </section>
             </div>
-        </ConnectedRouter>
+        </BrowserRouter>
     );
 };
 

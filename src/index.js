@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
-import {AppContainer} from 'react-hot-loader';
+import { Provider } from 'react-redux';
+import { AppContainer } from 'react-hot-loader';
 import createHistory from 'history/createBrowserHistory';
 import configureStore from './configureStore';
 import App from 'components/App';
@@ -14,8 +14,6 @@ const rootEl = document.getElementById('root');
 // Build the redux store (will be passed into the <Provider>)
 const store = configureStore(history);
 
-// Now you can dispatch navigation actions from anywhere!
-// store.dispatch(push('/foo'))
 const render = Component => {
     console.log('<index> render()');
     ReactDOM.render(

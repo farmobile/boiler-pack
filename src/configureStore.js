@@ -1,15 +1,11 @@
 import { createStore, applyMiddleware, compose } from "redux";
-import { routerMiddleware } from "react-router-redux";
 import rootReducer from "components/Reducers";
 
-export default history => {
+export default () => {
     let devtool = f => f;
     if (window && window.devToolsExtension) {
         devtool = window.devToolsExtension();
     }
-
-    // Build the middleware for intercepting and dispatching navigation actions
-    const middleware = routerMiddleware(history);
 
     // preload a saved state object (e.g. from local storage)
     const persistedState = undefined;
@@ -18,7 +14,9 @@ export default history => {
     const store = createStore(
         rootReducer,
         persistedState,
-        compose(applyMiddleware(middleware), devtool)
+        compose(applyMiddleware(
+            /* add any middleware pkgs here */
+        ), devtool)
     );
 
     // Enable Webpack hot module replacement for reducers

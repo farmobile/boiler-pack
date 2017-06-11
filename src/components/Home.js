@@ -4,7 +4,7 @@ const Home = () => {
     console.log("<Home> render()");
     return (
         <div>
-            <h1>Hello World!</h1>
+            <h1>Hello There!</h1>
             <p>
                 This starter project contains examples of the following concepts:
             </p>

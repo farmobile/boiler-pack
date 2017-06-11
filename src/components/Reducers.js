@@ -1,5 +1,4 @@
 import { combineReducers } from "redux";
-import { routerReducer } from "react-router-redux"
 import { reducer as rootReducer } from 'redux-form'
 
 const INITIAL_STATE = { title: "About", text: "Default text from the Redux store." }
@@ -34,7 +33,6 @@ const DynamicReducer = (state = {value: null}, action) => {
 };
 
 export default combineReducers({
-    router: routerReducer,
     form: rootReducer,
     basic: BasicReducer,
     dynamic: DynamicReducer
