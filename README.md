@@ -25,12 +25,11 @@ If you're looking for something more bare bones (and less opinionated), use [cre
 * webpack-dashboard
 
 ### Prerequisites
-First things first...be sure that you have `node` and `yarn` installed on your system. You can check to see if they're already installed by running the commands:
+First things first...you'll need the `yarn` package manager installed on your system. You can check to see if it's already installed by running the command:
 ```bash
-node -v
 yarn --version
 ```
-If needed, follow the directions for [installing Node](https://nodejs.org/en/download/package-manager/) or [installing Yarn](https://yarnpkg.com/en/docs/install).
+If needed, follow the directions for [installing Yarn](https://yarnpkg.com/en/docs/install) (which will also install Node, if needed).
 
 ### Getting Started
 ```bash
