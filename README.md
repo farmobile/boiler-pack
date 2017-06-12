@@ -54,3 +54,7 @@ yarn start -- --env.port:3000
 # run dev server from a different host (default is 'localhost')
 yarn start -- --env.host:0.0.0.0
 ```
+
+### Special Thanks :clap: :clap: :clap:
+Automated testing generously donated by [BrowserStack](https://www.browserstack.com/)
+![BrowserStack](https://www.browserstack.com/images/mail/chrome-on-ios/chrome-on-ios-bslogo.png)
