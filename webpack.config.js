@@ -61,7 +61,7 @@ module.exports = function(env){
             new webpack.HotModuleReplacementPlugin(),
             new webpack.NamedModulesPlugin(),
             new webpack.NoEmitOnErrorsPlugin(),
-            new webpack.optimize.ModuleConcatenationPlugin(),
+            //new webpack.optimize.ModuleConcatenationPlugin(),
             new DashboardPlugin(),
             new webpack.DefinePlugin({
                 __HMR__: true,

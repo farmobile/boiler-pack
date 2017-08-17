@@ -1,13 +1,24 @@
+.app {
+    height: inherit;
+}
+
 .container {
-    width: 90%;
-    max-width: 80rem;
-    margin: 3.2rem auto;
+    display: flex;
+    height: 100%;
 }
 
 .card {
     background-color: #fff;
-    padding: 3.2rem;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px;
+}
+
+.sidebar {
+    width: 32rem;
+    flex-shrink: 0;
+}
+
+.main {
+    flex: 1 1 auto;
 }
 
 .nav {
@@ -29,6 +40,6 @@
     }
 }
 
-.content {
-    min-height: 45vh;
+.padded {
+    padding: 1.6rem;
 }
