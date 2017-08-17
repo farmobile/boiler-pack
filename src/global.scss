@@ -67,4 +67,12 @@
     button + button{
     	margin-left: 0;
     }
+
+    .baselayer {
+        &.on {
+            svg {
+                fill: #228ae6;
+            }
+        }
+    }
 }
