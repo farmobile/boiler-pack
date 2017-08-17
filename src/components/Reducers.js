@@ -1,14 +1,13 @@
 import { combineReducers } from "redux";
 
-const INITIAL_STATE = { title: "About", text: "Default text from the Redux store." }
+const INITIAL_STATE = { }
 
 const BasicReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-        case "CHANGE_PAGE_DATA":
+        case "ACTION_NAME":
             return {
                 ...state,
-                title: action.payload.title,
-                text: action.payload.text
+                do: 'something'
             };
         default:
             return state;
