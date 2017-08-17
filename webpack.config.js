@@ -61,6 +61,7 @@ module.exports = function(env){
             new webpack.HotModuleReplacementPlugin(),
             new webpack.NamedModulesPlugin(),
             new webpack.NoEmitOnErrorsPlugin(),
+            new webpack.optimize.ModuleConcatenationPlugin(),
             new DashboardPlugin(),
             new webpack.DefinePlugin({
                 __HMR__: true,
@@ -79,6 +80,7 @@ module.exports = function(env){
             new HtmlWebpackPlugin({
                 alwaysWriteToDisk: true,
                 title: 'boiler-pack (HMR)',
+                favicon: path.resolve(__dirname, 'src/favicon.ico'),
                 template: path.resolve(__dirname, 'src/index.template.ejs')
             }),
             new PreloadWebpackPlugin({

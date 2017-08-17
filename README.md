@@ -13,7 +13,7 @@ If you're looking for something more bare bones (and less opinionated), use [cre
 * Code linting (ES6)
 
 ### Tools/Technologies:
-* webpack2 + Tree Shaking
+* webpack3 + Tree Shaking
 * babel
 * react
 * react-router (v4)
